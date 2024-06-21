@@ -18,7 +18,7 @@
               DATA GURU
             </div>
             <div class="card-body">
-              <a href="tambah-guru.php" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH DATA GURU</a>
+              <a href="tambah-guru.php" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH DATA</a>
               <table class="table table-bordered" id="myTable">
                 <thead>
                   <tr>
@@ -27,29 +27,31 @@
                     <th scope="col">NAMA LENGKAP</th>
                     <th scope="col">GOLONGAN</th>
                     <th scope="col">JENIS KELAMIN</th>
+                    <th scope="col">AKSI</th>
+
                   </tr>
                 </thead>
                 <tbody>
                   <?php 
                       include('koneksi.php');
-                      $no = 1;
+                      $i = 1;
                       $query = mysqli_query($connection,"SELECT * FROM tbl_guru");
-                      while($row = mysqli_fetch_array($query)){
+                      while($row = mysqli_fetch_array($query)):
                   ?>
 
                   <tr>
-                      <td><?php echo $no++ ?></td>
-                      <td><?php echo $row['nuptk'] ?></td>
-                      <td><?php echo $row['nama'] ?></td>
-                      <td><?php echo $row['golongan'] ?></td>
-                      <td><?php echo $row['jenis_kelamin'] == 'L' ?"Laki-laki" : "Perempuan"; ?></td>
+                      <td><?= $i++ ?></td>
+                      <td><?= $row['nuptk'] ?></td>
+                      <td><?= $row['nama'] ?></td>
+                      <td><?= $row['golongan'] ?></td>
+                      <td><?=  $row['jenis_kelamin'] == 'L' ? "Laki-laki" : "Perempuan" ; ?></td>
                       <td class="text-center">
-                        <a href="edit-guru.php?nuptk=<?php echo $row['nuptk'] ?>" class="btn btn-sm btn-primary">EDIT</a>
-                        <a href="hapus-guru.php?nuptk=<?php echo $row['nuptk'] ?>" class="btn btn-sm btn-danger">HAPUS</a>
-                      </td>
+                        <a href="edit-guru.php?id=<?= $row['idguru']?>" class="btn btn-sm btn-primary">EDIT</a>
+                        <a href="hapus-guru.php?id=<?= $row['idguru']?>" class="btn btn-sm btn-danger">HAPUS</a>
+                      </td> 
                   </tr>
 
-                <?php } ?>
+                <?php endwhile ?>
                 </tbody>
               </table>
             </div>

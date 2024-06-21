@@ -4,13 +4,15 @@
 include('koneksi.php');
 
 //get data dari form
-$id_siswa     = $_POST['id_siswa'];
-$nisn         = $_POST['nisn'];
-$nama_lengkap = $_POST['nama_lengkap'];
-$alamat       = $_POST['alamat'];
+$nim             = $_POST['nim'];
+$nama            = $_POST['nama'];
+$angkatan        = $_POST['angkatan'];
+$no_daftar       = $_POST['no_daftar'];
+$tarif_spi       = $_POST['tarif_spi'];
+$tarif_ukt_awal  = $_POST['tarif_ukt_awal'];
 
 //query update data ke dalam database berdasarkan ID
-$query = "UPDATE tbl_siswa SET nisn = '$nisn', nama_lengkap = '$nama_lengkap', alamat = '$alamat' WHERE id_siswa = '$id_siswa'";
+$query = "UPDATE mahasiswa SET nim = '$nim', nama = '$nama', angkatan = '$angkatan', no_daftar = '$no_daftar', tarif_spi = '$tarif_spi', tarif_ukt_awal = '$tarif_ukt_awal' WHERE nim = '$nim'";
 
 //kondisi pengecekan apakah data berhasil diupdate atau tidak
 if($connection->query($query)) {

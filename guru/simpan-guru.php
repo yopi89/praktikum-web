@@ -4,13 +4,12 @@
 include('koneksi.php');
 
 //get data dari form
-$nuptk           = $_POST['nuptk'];
-$nama            = $_POST['nama'];
-$golongan        = $_POST['golongan'];
-$jenis_kelamin   = $_POST['jenis_kelamin'];
-
+$nuptk        = $_POST['nuptk'];
+$nama_lengkap = $_POST['nama_lengkap'];
+$golongan     = $_POST['golongan'];
+$gender     = $_POST['gender'];
 //query insert data ke dalam database
-$query = "INSERT INTO tbl_guru (nuptk, nama, golongan, jenis_kelamin) VALUES ('$nuptk', '$nama', '$golongan', '$jenis_kelamin')";
+$query = "INSERT INTO tbl_guru (nuptk, nama, golongan, jenis_kelamin) VALUES ('$nuptk', '$nama_lengkap', '$golongan', '$gender')";
 
 //kondisi pengecekan apakah data berhasil dimasukkan atau tidak
 if($connection->query($query)) {

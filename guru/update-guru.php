@@ -4,13 +4,13 @@
 include('koneksi.php');
 
 //get data dari form
-$nuptk           = $_POST['nuptk'];
-$nama            = $_POST['nama'];
-$golongan        = $_POST['golongan'];
-$jenis_kelamin   = $_POST['jenis_kelamin'];
+$id_guru     = $_POST['idguru'];
+$nama_lengkap = $_POST['nama'];
+$golongan     = $_POST['golongan'];
+$gender     = $_POST['gender'];
 
 //query update data ke dalam database berdasarkan ID
-$query = "UPDATE tbl_guru SET nuptk = '$nuptk', nama = '$nama', golongan = '$golongan', jenis_kelamin = '$jenis_kelamin' WHERE nuptk = '$nuptk'";
+$query = "UPDATE tbl_guru SET  nama = '$nama_lengkap', golongan = '$golongan',jenis_kelamin ='$gender' WHERE idguru = '$id_guru'";
 
 //kondisi pengecekan apakah data berhasil diupdate atau tidak
 if($connection->query($query)) {
